@@ -27,13 +27,12 @@ fn main() {
                 let buf = serde_json::to_string(&data).unwrap();
 
                 publisher.put(buf).res().await.unwrap();
+                println!("{}", buf);
             }
             Err(e)=>
             {
                 println!("[ERROR]:{}", e);
             }
         }
-
-        println!("{:?}",data);
     }
 }
