@@ -10,30 +10,33 @@ use zenoh::{
 };
 
 use joy_publisher::get_button;
+use async_std;
 
-fn main() {
+#[async_std::main]
+async fn main() {
     let api = HidApi::new().expect("Failed to create HID API instance.");
     let controller = dualshock4::get_device(&api).expect("Failed to open device");
 
     let session = zenoh::open(Config::default()).res().await.unwrap();
-    let topic = "/joy".to_string();
+    let topic = "joy_publisher/button".to_string();
     let publisher = session.declare_publisher(&topic).res().await.unwrap();
+
+    println!("Start {}", topic);
 
     loop {
         match dualshock4::read(&controller) {
             Ok(data)=>
             {
                 let button = get_button(data);
-                let buf = serde_json::to_string(&data).unwrap();
+                let buf = serde_json::to_string(&button).unwrap();
 
-                publisher.put(buf).res().await.unwrap();
+                publisher.put(buf.clone()).res().await.unwrap();
+                println!("{}", buf);
             }
             Err(e)=>
             {
                 println!("[ERROR]:{}", e);
             }
         }
-
-        println!("{:?}",data);
     }
 }
