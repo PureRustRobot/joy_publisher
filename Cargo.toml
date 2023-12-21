@@ -10,7 +10,7 @@ hidapi = "0.4.1"
 dualshock4 = "0.1.0"
 
 zenoh = "0.7.0-rc"
-z_interface = {git = "https://github.com/PureRustRobot/z_interface"}
+zenoh_interface = {git = "https://github.com/PureRustRobot/zenoh_interface"}
 
 serde = "1.0"
 serde_json = "1.0"
