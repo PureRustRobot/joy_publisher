@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 libusb = "0.3.0"
-libusb = "0.2.3"
+libusb-sys = "0.2.3"
 hidapi = "0.4.1"
 dualshock4 = "0.1.0"
 
