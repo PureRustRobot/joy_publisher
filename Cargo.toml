@@ -6,15 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-libusb = "0.3.0"
-libusb-sys = "0.2.3"
-hidapi = "0.4.1"
-dualshock4 = "0.1.0"
-
+dualshock-driver = {git = "https://github.com/motii8128/dualshock-driver"}
+prr_msgs = {git = "https://github.com/PureRustRobot/prr_msgs"}
+prr_utils = {git = "https://github.com/PureRustRobot/prr_utils"}
 zenoh = "0.7.0-rc"
-zenoh_interface = {git = "https://github.com/PureRustRobot/zenoh_interface"}
-
-serde = "1.0"
-serde_json = "1.0"
-
 async-std = "1.0"
